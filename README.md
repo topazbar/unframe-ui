@@ -1,5 +1,54 @@
-# Vue 3 + TypeScript + Vite
+Contollers -
+Auth
+Openai
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+main services -
+GmailService
+GoogleDrive
+Auth
+UserState (storage)
+Openai
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Flow -
+AUTH ->
+Generate URL for Google login
+Obtain access token
+Store in localStorage using email as key (Email,JWT)
+
+UI → OPENAI
+The user asks a question
+OpenAI returns a structured JSON based on the relevant service
+
+exemple -
+{
+"googleDrive": {
+"filters": {
+"orderBy": "modifiedTime desc",
+"pageSize": 5
+},
+"fields": ["id", "name", "mimeType", "modifiedTime"]
+}
+}
+
+OPENAI → SERVICE
+The structured query is sent to the appropriate service:
+GMAIL SERVICE
+GOOGLE DRIVE SERVICE
+
+auth -> geturl (create code by google)-> reddirect func to create accesstoken -> jenerate jwt token -> return to client
+
+openai get data by query -> auth by middleware -> generate json by openai -> schema check zod -> loop on mapping providers -> get data from services
+
+NEET TO THINK -
+1.ON SERCHAI RETURN THE PARSED OBJ TO THE UI
+AND THEN THE CLIENT WILL TO THE REQ
+2.PUT THE STORE OUTSIDE IN SERVICE (PAGINIATION)
+3.GENERAL GOOGLE AND GMAILS SERVICE DO ONLY ONE FUNC?
+4.Error in one service
+
+TODO -
+-storage in redis
+-prompt isnt good enough
+-ui filters?
+-test
+-gmail google queries

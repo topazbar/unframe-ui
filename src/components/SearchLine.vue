@@ -31,7 +31,6 @@ const handleSearch = async () => {
     const result = await fetchAiResult(searchQuery.value.trim());
     accumulatedResults.value = result.data.result;
     isNextPageToken.value = result.data.isNextPageToken ?? false;
-    console.log(isNextPageToken.value, "isNextPageToken");
   } catch (e) {
     console.log(e);
   } finally {

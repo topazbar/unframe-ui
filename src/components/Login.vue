@@ -11,13 +11,11 @@
 
 <script setup lang="ts">
 import axios from "axios";
+import { LOGIN_URL } from "./consts";
 
 async function loginWithGoogle() {
   try {
-    const resUrl = await axios.get(
-      "http://localhost:3000/auth/googleGenerateUrlAuth",
-      { withCredentials: true }
-    );
+    const resUrl = await axios.get(LOGIN_URL, { withCredentials: true });
     const url = await resUrl.data;
     window.location.href = url;
   } catch (e: any) {

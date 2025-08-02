@@ -32,7 +32,7 @@ const hasPrev = computed(() => startIndex.value > 0);
 const handlePrev = () => {
   startIndex.value = Math.max(0, startIndex.value - PAGE_SIZE);
 };
-// טיפול בלחיצה על "הבא"
+
 const handleNext = () => {
   if (hasMoreLocal.value) {
     startIndex.value += PAGE_SIZE;

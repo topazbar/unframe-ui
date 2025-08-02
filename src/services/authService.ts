@@ -1,13 +1,14 @@
 import axios from "axios";
 import { type RouteLocationNormalizedLoaded, type Router } from "vue-router";
 import { publicRoutes } from "./consts";
+import { VALID_TOKEN_ROUTE } from "../components/consts";
 
 export async function checkAuthAndRedirect(
   route: RouteLocationNormalizedLoaded,
   router: Router
 ) {
   try {
-    await axios.get("http://localhost:3000/auth/validToken", {
+    await axios.get(VALID_TOKEN_ROUTE, {
       withCredentials: true,
     });
 
